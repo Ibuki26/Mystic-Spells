@@ -1,0 +1,31 @@
+public enum AudioType
+{
+    WizardJump,
+    EnemyDamage,
+    EnemyDie,
+    RapidShot,
+
+    button,
+    cursor,
+    fireBall,
+    closeWindow,
+    openWindow,
+    backHome,
+    heal,
+    gameOver,
+    gameClear,
+    coin,
+    start,
+    needle,
+    fireMeteor,
+    damage_player,
+    warp,
+    slash,
+    find_moster,
+    delayShot,
+    paralysis,
+    magicDefalut,
+    boost_up,
+    boost_down,
+    buttonCancel
+}

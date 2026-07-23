@@ -164,6 +164,7 @@ public class WizardPresenter : MonoBehaviour
         var isStanding = (_stateFlags & WizardStateFlags.Standing) != 0;
         if (isStanding && _jumpRequested)
         {
+            AudioManager.Instance.PlaySE(AudioType.WizardJump);
             _stateFlags |= WizardStateFlags.Jumping;
             _jumpRequested = false;
         }

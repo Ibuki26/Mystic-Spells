@@ -61,8 +61,8 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         if (_model.Status.HitPoint <= 0 || !_canTakeDamage) return;
 
         _canTakeDamage = false;
-        
-        //‰¹º‚ð—¬‚·
+
+        AudioManager.Instance.PlaySE(AudioType.EnemyDamage);
 
         _view.FlashDamage();
 
@@ -83,7 +83,7 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
 
         //ƒXƒRƒA‚Ì‰ÁŽZ
 
-        //SE‚ð—¬‚·
+        AudioManager.Instance.PlaySE(AudioType.EnemyDie);
 
         GetComponent<Collider2D>().enabled = false;
 

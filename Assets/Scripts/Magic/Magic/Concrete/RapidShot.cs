@@ -14,6 +14,7 @@ public class RapidShot : ShotMagic
     public override void Initialize(ShotMagicInitContext context)
     {
         base.Initialize(context);
+        AudioManager.Instance.PlaySE(AudioType.RapidShot);
         _rb2d.linearVelocity = new Vector2(context.Speed * context.Direction, 0);
 
         SetDirectionScale(context.Direction);
