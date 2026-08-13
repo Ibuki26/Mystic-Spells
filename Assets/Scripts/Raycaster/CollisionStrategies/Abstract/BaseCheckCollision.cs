@@ -7,7 +7,7 @@ public abstract class BaseCheckCollision
 {
     protected float _raycastDistance; //Raycastの線の長さ
     protected LayerMask _layerMask;
-    private readonly Collider2D _collider;
+    protected readonly Collider2D _collider;
 
     protected ContactFilter2D _contactFilter;
     protected Vector2[] _raycastPositions = new Vector2[3]; //Raycastの始点。左、中央、右で3つ
@@ -25,6 +25,16 @@ public abstract class BaseCheckCollision
         _contactFilter.layerMask = _layerMask;
         _contactFilter.useLayerMask = true;
         _contactFilter.useTriggers = false;
+    }
+
+    public void AddLayerMask(LayerMask mask)
+    {
+        _contactFilter.layerMask |= mask;
+    }
+
+    public void DeleteLayerMask(LayerMask mask)
+    {
+        _contactFilter.layerMask &= ~mask;
     }
 
     //当たり判定の確認を行う関数

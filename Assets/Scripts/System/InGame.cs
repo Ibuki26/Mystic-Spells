@@ -5,19 +5,17 @@ using UnityEngine;
 public class InGame : MonoBehaviour
 {
     [SerializeField] private WizardPresenter _wizard;
-    [SerializeField] private HitPointViewer _hitPointViewer;
     [SerializeField] private EnemyPresenter[] enemies;
 
     void Start()
     {
         _wizard.ManualStart();
-        _hitPointViewer.ManualStart();
+        UIManager.Instance.ManualStart();
         foreach (var enemy in enemies)
         {
             if(enemy != null)
                 enemy.ManualStart();
         }
-            
     }
 
     void Update()

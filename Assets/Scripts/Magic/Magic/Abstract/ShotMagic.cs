@@ -22,7 +22,7 @@ public abstract class ShotMagic : MonoBehaviour, IMagic<ShotMagicInitContext>
         _strength = context.Strength;
         _durationTimer = new Timer();
 
-        _durationTimer.Start(context.Duration);
+        _durationTimer.StartTimer(context.Duration);
     }
 
     private void Update()
@@ -33,7 +33,9 @@ public abstract class ShotMagic : MonoBehaviour, IMagic<ShotMagicInitContext>
     //継続時間が終了したらオブジェクトを破棄する
     private void UpdateLifeTime()
     {
-        if (_durationTimer.IsReady() && !_isDestoryed && !_stopAutoDestory)
+        var isReady = _durationTimer.UpdateTimer(Time.deltaTime);
+
+        if (isReady && !_isDestoryed && !_stopAutoDestory)
         {
             _isDestoryed = true;
             Destroy(gameObject);

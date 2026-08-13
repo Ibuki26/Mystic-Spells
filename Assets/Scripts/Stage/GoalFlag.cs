@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugEnemy : MonoBehaviour
+public class GoalFlag : MonoBehaviour
 {
+    private bool _isGoalReached;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_isGoalReached) return;
+
         if(collision.TryGetComponent<WizardPresenter>(out var wizard))
         {
-            wizard.Model.CalculateDamage(50, 20);
+            _isGoalReached = true;
+            //ÉSÅ[Éãèàóù
         }
     }
 }

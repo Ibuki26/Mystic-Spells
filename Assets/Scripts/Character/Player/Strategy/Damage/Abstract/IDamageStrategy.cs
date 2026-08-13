@@ -6,5 +6,5 @@ using UnityEngine;
 public interface IDamageStrategy
 {
     //ダメージの計算を行う
-    public int CalculateDamage(int attackerStrength, int skillPower, int defense);
+    public int CalculateDamage(DamageContext context, int defense);
 }

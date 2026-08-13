@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Player",
     "maps": [
         {
@@ -18,7 +19,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "e61615b2-789e-4d25-a8bf-2c0b60dc1545",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -28,6 +29,15 @@
                     "type": "Button",
                     "id": "a4b50111-4235-44f7-b089-ed65c14ab148",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fallthrough",
+                    "type": "Button",
+                    "id": "688ac7f3-840b-446b-b398-ddd28511f8f2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -141,6 +151,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7f1a898-6650-49cf-b8d5-4ff9fd08fa45",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fallthrough",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd15f684-446c-4cac-bb8d-d0293252875d",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fallthrough",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -8,5 +8,7 @@ public interface ICastCommand
 {
     public void Execute(IMagicConfig config, CastContext castContext);
 
+    public bool UpdateCooldown(float deltaTime);
+
     public bool IsReady();
 }

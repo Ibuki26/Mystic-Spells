@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,14 +20,20 @@ public class WizardPresenter : MonoBehaviour
     private CheckCeilingCollision _ceilingChecker;
     private ICastCommand _castCommand;
     private IMagicConfig _config;
+    private Timer _damageCooldownTimer;
+    private Timer _castingTimer;
 
     private float _xAxis = 0f; //x方向の入力状態を記録する
     private bool _jumpRequested = false;
+    private bool _jumpRelesed = false;
     private bool _castRequested = false;
+    private int _oneWayPlatformLayer;
 
-    [SerializeField] private float RaycastDistance = 0.09f;
-    [SerializeField] private float GroundAdjustValueY = 0.11f; //Raycastのy座標の生成位置を調整する値
+    private float RaycastDistance = 0.09f;
+    private float GroundAdjustValueY = 0.11f; //Raycastのy座標の生成位置を調整する値
     private const float MoveThreshold = 0.2f; //x方向の入力の閾値
+    private const float DamgaCooldownTime = 0.15f;
+    private const float CastingTime = 0.30f;
 
     //Debug用
     public WizardStateFlags StateFlags => _stateFlags;
@@ -45,6 +52,7 @@ public class WizardPresenter : MonoBehaviour
         _playerinput.onActionTriggered += OnMove;
         _playerinput.onActionTriggered += OnJump;
         _playerinput.onActionTriggered += OnCast;
+        _playerinput.onActionTriggered += OnFallthrough;
     }
 
     // PlayerInputへの関数登録解除
@@ -55,6 +63,7 @@ public class WizardPresenter : MonoBehaviour
         _playerinput.onActionTriggered -= OnMove;
         _playerinput.onActionTriggered -= OnJump;
         _playerinput.onActionTriggered -= OnCast;
+        _playerinput.onActionTriggered -= OnFallthrough;
     }
 
     public void ManualStart()
@@ -76,16 +85,28 @@ public class WizardPresenter : MonoBehaviour
         _ceilingChecker = new CheckCeilingCollision(RaycastDistance, _layerMask, collider);
         _groundChecker.ConfigureContactFilter2D();
         _ceilingChecker.ConfigureContactFilter2D();
+        _oneWayPlatformLayer = 1 << LayerMask.NameToLayer("OneWayPlatform");
 
         // 魔法情報の初期設定
         _config = new ShotMagicConfig(_configData);
         _castCommand = new ShotMagicCommand(new ShotMagicFactory());
+
+        _damageCooldownTimer = new Timer();
+        _castingTimer = new Timer();
     }
 
     public void ManualUpdate()
     {
         UpdateJumpAnimation();
         UpdateMoveAnimation();
+
+        if (_damageCooldownTimer.UpdateTimer(Time.deltaTime))
+            _stateFlags &= ~WizardStateFlags.Invincible;
+
+        if (_castingTimer.UpdateTimer(Time.deltaTime))
+            _stateFlags &= ~WizardStateFlags.Casting;
+
+        _castCommand.UpdateCooldown(Time.deltaTime);
     }
 
     public void ManualFixedUpdate()
@@ -94,10 +115,13 @@ public class WizardPresenter : MonoBehaviour
         HandleLanding();
         UpdateCeilingFlag();
 
-        _rb2d.linearVelocity = _velocityController.UpdateVelocity(_rb2d.linearVelocity, _jumpRequested, _model, _xAxis, _stateFlags);
+        var context = new WizardVelocityContext(_rb2d.linearVelocity, _jumpRequested, _jumpRelesed, _model, _xAxis, _stateFlags);
+        _rb2d.linearVelocity = _velocityController.UpdateVelocity(context );
         StartJump();
 
         StartCast();
+
+        _jumpRelesed = false;
     }
 
     #region 移動関連
@@ -131,7 +155,7 @@ public class WizardPresenter : MonoBehaviour
     {
         if (context.action.name != "Jump") return;
 
-        if (context.performed)
+        if (context.started)
             TryJump();
 
         if (context.canceled)
@@ -155,6 +179,7 @@ public class WizardPresenter : MonoBehaviour
         if (isJumping)
         {
             _stateFlags &= ~WizardStateFlags.Jumping;
+            _jumpRelesed = true;
         }
     }
 
@@ -180,9 +205,10 @@ public class WizardPresenter : MonoBehaviour
     private void OnCast(InputAction.CallbackContext context)
     {
         var isCasting = (_stateFlags & WizardStateFlags.Casting) != 0;
-        var isReady = _castCommand.IsReady();
-        if (context.action.name != "Cast" || isCasting || !isReady) return;
+        if (context.action.name != "Cast" || isCasting) return;
 
+        if (!_castCommand.IsReady()) return;
+    
         _castRequested = true;
     }
 
@@ -197,18 +223,46 @@ public class WizardPresenter : MonoBehaviour
 
             var castContext = new CastContext(transform.position, _model.Direction, _model.Status.Strength);
             _castCommand.Execute(_config, castContext);
+
+            _castingTimer.StartTimer(CastingTime);
         }
     }
 
-    //Animation Eventから呼び出される
-    public void EndCast()
+    private void OnFallthrough(InputAction.CallbackContext context)
     {
-        _stateFlags &= ~WizardStateFlags.Casting;
+        if (context.action.name != "Fallthrough" || !context.canceled) return;
+
+        if (_groundChecker.TryGetGroundComponent<FallthroughPlatform>(out var component))
+            component.Fallthrough().Forget();
+    }
+
+    public void TakeDamage(DamageContext context)
+    {
+        var isInvincible = (_stateFlags & WizardStateFlags.Invincible) != 0;
+        if (isInvincible || _model.Status.HitPoint == 0) return;
+
+        _stateFlags |= WizardStateFlags.Invincible;
+
+        _model.TakeDamage(context);
+
+        //UI表示
+
+        AudioManager.Instance.PlaySE(AudioType.WizardDamage);
+        _view.SetAnimationTrigger("hurt");
+
+        _damageCooldownTimer.StartTimer(DamgaCooldownTime);
     }
 
     //地面と接触しているか確認する
     private void UpdateStandingFlag()
     {
+        //ジャンプで上昇中はLayerがOneWayPlatromのオブジェクトは判定を取らない
+        var isJumping = (_stateFlags & WizardStateFlags.Jumping) != 0;
+        if (isJumping && _rb2d.linearVelocityY > 0f)
+            _groundChecker.DeleteLayerMask(_oneWayPlatformLayer);
+        else
+            _groundChecker.AddLayerMask(_oneWayPlatformLayer);
+
         var isGrounded = _groundChecker.CheckCollision(_model.Direction);
         if (isGrounded)
             _stateFlags |= WizardStateFlags.Standing;

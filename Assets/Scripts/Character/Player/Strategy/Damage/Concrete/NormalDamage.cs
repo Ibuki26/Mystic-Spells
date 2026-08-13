@@ -7,10 +7,19 @@ public class NormalDamage : IDamageStrategy
 {
     private const int DefenseDivider = 4;
 
-    public int CalculateDamage(int attackerStrength, int skillPower, int defense)
+    public int CalculateDamage(DamageContext context, int defense)
     {
-        int damage = skillPower + (attackerStrength - defense) / DefenseDivider;
-        
-        return Mathf.Max(0, damage);
+        switch (context.Type)
+        {
+            case DamageType.Normal:
+                return Mathf.Max(0, context.Power + (context.Strength - defense) / DefenseDivider);
+                
+            case DamageType.Fixed:
+                return context.Power;
+
+            default:
+                Debug.LogError($"–¢‘Î‰ž‚ÌDamageType : {context.Type}");
+                return 0;
+        }
     }
 }

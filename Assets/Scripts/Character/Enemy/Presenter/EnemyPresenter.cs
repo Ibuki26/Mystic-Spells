@@ -21,8 +21,13 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
     protected bool _isActivated = false;
     protected bool _canTakeDamage = true;
 
-    private const float DamageCooldownTime = 0.5f;
-    private const float DeathFallSpeed = -4f;
+    private const float DamageCooldownTime = 0.25f;
+    private const float DeathLaunchSpeedX = 3f;
+    private const float DeathLaunchSpeedY = 10f;
+    private const float DeathFallSpeed = -20f;
+    private const float DeathFallAcceleration = 20f;
+    private const float MinDeathRotation = 10f;
+    private const float MaxDeathRotation = 80f;
 
     public virtual void ManualStart()
     {
@@ -37,44 +42,50 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
 
     public virtual void ManualUpdate()
     {
-        if (_damageCooldownTimer.IsReady())
+        if (_damageCooldownTimer.UpdateTimer(Time.deltaTime))
             _canTakeDamage = true;
     }
 
-    public abstract void ManualFixedUpdate();
+    public virtual void ManualFixedUpdate()
+    {
+        if(_model.Status.HitPoint == 0)
+        {
+            UpdateDeathMotion();
+            return;
+        }
+    }
 
     public void EnterActivationArea()
     {
         _isActivated = true;
-        Debug.Log("enter");
     }
 
     public void ExitActivationArea()
     {
         _isActivated = false;
-        Debug.Log("exit");
     }
 
-    public void TakeDamage(int strength, int power)
+    public void TakeDamage(DamageContext context)
     {
         //体力が0以下、またはダメージを受けない状態のときは実行しない
-        if (_model.Status.HitPoint <= 0 || !_canTakeDamage) return;
-
+        if (_model.Status.HitPoint == 0 || !_canTakeDamage) return;
+        
         _canTakeDamage = false;
-
-        AudioManager.Instance.PlaySE(AudioType.EnemyDamage);
-
-        _view.FlashDamage();
-
-        _model.CalculateDamage(strength, power);
-
+        _model.TakeDamage(context);
+        
         //ダメージ量を画面に表示
-
-        _damageCooldownTimer.Start(DamageCooldownTime);
-
+        
         //体力が0なら死亡
         if (_model.Status.HitPoint == 0)
+        {
             Die();
+            return;
+        }
+            
+        AudioManager.Instance.PlaySE(AudioType.EnemyDamage);
+        _view.FlashDamage();
+        
+        _damageCooldownTimer.StartTimer(DamageCooldownTime);
     }
 
     private void Die()
@@ -87,11 +98,38 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
 
         GetComponent<Collider2D>().enabled = false;
 
-        _rb2d.linearVelocity = new Vector2(0, DeathFallSpeed);
+        _rb2d.linearVelocity = new Vector2(DeathLaunchSpeedX * -_model.Direction, DeathLaunchSpeedY);
 
-        _rb2d.DORotate( -90 * _model.Direction, 1)
-            .OnComplete(() => Destroy(gameObject));
+        var randomRotate = Random.Range(MinDeathRotation, MaxDeathRotation);
+        _rb2d.DORotate(randomRotate * _model.Direction, 0.5f);
 
         Debug.Log(transform.name + " Die");
+    }
+
+    //死亡時の落下演出
+    private void UpdateDeathMotion()
+    {
+        var velocityY = Mathf.MoveTowards(_rb2d.linearVelocityY, DeathFallSpeed, DeathFallAcceleration * Time.fixedDeltaTime);
+
+        _rb2d.linearVelocity = new Vector2(_rb2d.linearVelocityX, velocityY);
+    }
+
+    private void OnBecameInvisible()
+    {
+        if (_model.Status.HitPoint > 0)
+            return;
+        
+        //死亡後画面外に出たら破棄される
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var parent = collision.transform.parent;
+        if(parent != null && parent.TryGetComponent<WizardPresenter>(out var wizard))
+        {
+            var context = new DamageContext(_model.Status.Strength, _model.Power, DamageType.Normal);
+            wizard.TakeDamage(context);
+        }
     }
 }
