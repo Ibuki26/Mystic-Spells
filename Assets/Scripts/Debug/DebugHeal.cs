@@ -8,7 +8,7 @@ public class DebugHeal : MonoBehaviour
     {
         if (collision.TryGetComponent<WizardPresenter>(out var wizard))
         {
-            wizard.Model.CalculateHeal(30);
+            wizard.Model.TakeHeal(30);
         }
     }
 }

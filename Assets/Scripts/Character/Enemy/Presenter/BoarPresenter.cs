@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class BoarPresenter : EnemyPresenter
@@ -18,7 +18,7 @@ public class BoarPresenter : EnemyPresenter
     private bool _isWalled = false;
     private bool _isNextGrounded = false;
     private bool _isWizardInSight = false; //プレイヤーの発見状態を記録する
-    private bool _isTimerUsing = false;
+    private bool _stopRequest = false;
 
     private const float GroundRaycastDistance = 0.15f;
     private const float WallRaycastDistance = 0.4f;
@@ -50,19 +50,20 @@ public class BoarPresenter : EnemyPresenter
 
     public override void ManualFixedUpdate()
     {
+        base.ManualFixedUpdate();
+
         if (_isActivated)
         {
-            //地面と接触しているか確認
+            //当たり判定の確認
             _isGrounded = _groundChecker.CheckCollision(_model.Direction);
 
             _isWalled = _wallChecker.CheckCollision(_model.Direction);
             _isNextGrounded = _nextGroundChecker.CheckCollision(_model.Direction);
 
             //壁がある、移動先に地面が無いときに反対方向を向く
-            if(_isWalled || !_isNextGrounded)
+            if(!_stopRequest && (_isWalled || !_isNextGrounded))
             {
-                _model.Direction *= -1;
-                _view.SetDirectionScale(_model.Direction);
+                _stopRequest = true;
             }
 
             UpdateSightState();
@@ -84,6 +85,21 @@ public class BoarPresenter : EnemyPresenter
     //X方向の速度を計算する
     private float CalculateVelocityX()
     {
+        if (_stopRequest)
+        {
+            var velocityX = Mathf.MoveTowards(_rb2d.linearVelocityX, 0f, Acceleration * Time.fixedDeltaTime);
+
+            if (Mathf.Approximately(velocityX, 0f))
+            {
+                _model.Direction *= -1;
+                _view.SetDirectionScale(_model.Direction);
+                _stopRequest = false;
+            }
+
+            return velocityX;
+        }
+            
+
         float maxSpeed = _isWizardInSight? _speed + AdditionalSpeed : _speed;
 
         return Mathf.MoveTowards(_rb2d.linearVelocityX, maxSpeed * _model.Direction, Acceleration * Time.fixedDeltaTime);
@@ -98,7 +114,6 @@ public class BoarPresenter : EnemyPresenter
         if (isSeeingWizard)
         {
             _isWizardInSight = true;
-            _isTimerUsing = false;
             return;
         }
 
@@ -107,16 +122,53 @@ public class BoarPresenter : EnemyPresenter
         if (!_isWizardInSight)
             return;
 
-        if (!_isTimerUsing)
+        if (!_sightStateTimer.IsRunning)
         {
-            _sightStateTimer.Start(LostSightTime);
-            _isTimerUsing = true;
+            _sightStateTimer.StartTimer(LostSightTime);
         }
-
-         if (_sightStateTimer.IsReady())
+        else if (_sightStateTimer.UpdateTimer(Time.fixedDeltaTime))
         {
-             _isWizardInSight = false;
-            _isTimerUsing = true;
+            _isWizardInSight = false;
         }
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        var collider = GetComponent<BoxCollider2D>();
+        var bounds = collider.bounds;
+
+        //Ground
+        Handles.color = Color.red;
+        var startPosition = new Vector2(bounds.center.x, bounds.min.y);
+        var startPositions = new Vector2[3];
+        startPositions[0] = startPosition + Vector2.right * bounds.size.x * 0.4f;
+        startPositions[1] = startPosition;
+        startPositions[2] = startPosition + Vector2.left * bounds.size.x * 0.4f;
+        foreach(var position in startPositions)
+        {
+            Handles.DrawLine(position, position + Vector2.down * GroundRaycastDistance);
+        }
+
+        //Wall
+        Handles.color = Color.blue;
+        var positionX = direction == 1 ? bounds.max.x : bounds.min.x;
+        var startPosition2 = new Vector2(positionX, bounds.center.y);
+        var startPositions2 = new Vector2[3];
+        startPositions2[0] = startPosition2 + Vector2.up * bounds.size.y * 0.4f;
+        startPositions2[1] = startPosition2;
+        startPositions2[2] = startPosition2 + Vector2.down * bounds.size.y * 0.4f;
+        foreach(var position in startPositions2)
+        {
+            Handles.DrawLine(position, position + new Vector2(direction * WallRaycastDistance, 0));
+        }
+
+        //NextGround
+        Handles.color = Color.green;
+        var startPosition3 = startPosition + new Vector2(NextGroundAdjustValueX, 0);
+        Handles.DrawLine(startPosition3, startPosition3 + Vector2.down * GroundRaycastDistance);
+
+        Handles.color = Color.white;
+    }
+#endif
 }

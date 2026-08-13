@@ -23,12 +23,17 @@ public class ShotMagicCommand : ICastCommand
         var spawnPosition = CalculateSpawnPosition(castContext.Position, shotMagicConfig.SpawnOffset, castContext.Direction);
         _factory.Create(shotMagicConfig, spawnPosition, castContext.Strength, castContext.Direction);
 
-        _cooldownTimer.Start(shotMagicConfig.CoolTime);
+        _cooldownTimer.StartTimer(shotMagicConfig.CoolTime);
+    }
+
+    public bool UpdateCooldown(float deltaTime)
+    {
+        return _cooldownTimer.UpdateTimer(deltaTime);
     }
 
     public bool IsReady()
     {
-        return _cooldownTimer.IsReady();
+        return !_cooldownTimer.IsRunning;
     }
 
     private Vector3 CalculateSpawnPosition(Vector3 position, Vector3 offset, int direction)

@@ -11,7 +11,8 @@ public class CheckWallCollision : BaseCheckCollision
 
     protected override Vector2 GetRaycastStart(Bounds bounds, int direction)
     {
-        return new Vector2(bounds.center.x, bounds.min.y) + new Vector2(bounds.size.x * 0.5f * direction, bounds.size.y * 0.5f);
+        var positionX = direction == 1 ? bounds.max.x : bounds.min.x;
+        return new Vector2(positionX, bounds.center.y);
     }
 
     protected override Vector2 GetDirection(int direction)

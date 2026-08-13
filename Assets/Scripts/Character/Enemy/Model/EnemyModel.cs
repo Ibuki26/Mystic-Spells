@@ -83,14 +83,14 @@ public class EnemyModel
     }
 
     // ダメージ計算を行い、HPを減少させる
-    public void CalculateDamage(int attackerStrength, int skillPower)
+    public void TakeDamage(DamageContext context)
     {
-        int damage = _damageStrategy.CalculateDamage(attackerStrength, skillPower, _status.Defense);
+        int damage = _damageStrategy.CalculateDamage(context, _status.Defense);
         _status.SetHitPoint(_status.HitPoint - damage);
     }
 
     //回復量の計算を行い、HPを増加させる
-    public void CalculateHeal(int healPower)
+    public void TakeHeal(int healPower)
     {
         int healAmount = _healStrategy.CalculateHeal(healPower);
         _status.SetHitPoint(_status.HitPoint + healAmount);

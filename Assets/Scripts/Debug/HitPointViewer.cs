@@ -9,7 +9,7 @@ public class HitPointViewer : MonoBehaviour
     [SerializeField] private WizardPresenter _wizard;
     private TextMeshProUGUI _textMesh;
 
-    public void ManualStart()
+    public void Initialize()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
         _textMesh.text = _wizard.Model.Status.HitPoint.ToString();

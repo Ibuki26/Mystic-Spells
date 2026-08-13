@@ -1,6 +1,7 @@
 public enum AudioType
 {
     WizardJump,
+    WizardDamage,
     EnemyDamage,
     EnemyDie,
     RapidShot,
@@ -18,7 +19,6 @@ public enum AudioType
     start,
     needle,
     fireMeteor,
-    damage_player,
     warp,
     slash,
     find_moster,

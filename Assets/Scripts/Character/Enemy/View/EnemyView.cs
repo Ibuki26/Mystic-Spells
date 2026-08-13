@@ -10,7 +10,7 @@ public class EnemyView : CharacterView
     [SerializeField] private Color _damagedColor;
     private SpriteRenderer _sr;
 
-    private const float FlashDuration = 0.2f;
+    private const float FlashDuration = 0.25f;
 
     public override void Initialize()
     {
@@ -19,19 +19,11 @@ public class EnemyView : CharacterView
     }
 
     //ダメージを受けた演出
-    public async UniTask FlashDamageAsync()
-    {
-        _sr.color = _damagedColor;
-        await UniTask.Delay(TimeSpan.FromSeconds(FlashDuration),
-            cancellationToken: this.GetCancellationTokenOnDestroy());
-        _sr.color = Color.white;
-    }
-
     public void FlashDamage()
     {
         DOTween.Sequence()
             .Append(_sr.DOColor(_damagedColor, 0.05f))
-            .AppendInterval(0.1f)
+            .AppendInterval(FlashDuration)
             .Append(_sr.DOColor(Color.white, 0.05f));
     }
 }

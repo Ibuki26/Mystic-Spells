@@ -24,7 +24,8 @@ public class RapidShot : ShotMagic
     {
         if(collision.TryGetComponent<EnemyPresenter>(out var enemy))
         {
-            enemy.TakeDamage(_strength, _power);
+            var context = new DamageContext(_strength, _power, DamageType.Normal);
+            enemy.TakeDamage(context);
         }
     }
 }
