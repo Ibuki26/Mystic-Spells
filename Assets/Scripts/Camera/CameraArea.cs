@@ -7,7 +7,6 @@ public class CameraArea : MonoBehaviour
     [SerializeField] private bool left;
     [SerializeField] private bool up;
     [SerializeField] private bool down;
-    [SerializeField] private Vector3 offset;
 
     private BoxCollider2D _collider;
     private CameraController _controller;
@@ -21,7 +20,6 @@ public class CameraArea : MonoBehaviour
     public float MinX => _minX;
     public float MaxY => _maxY;
     public float MinY => _minY;
-    public Vector3 Offset => offset;
 
     public Bounds Bounds => _collider.bounds;
 

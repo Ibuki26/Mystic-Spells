@@ -78,7 +78,7 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         //ëÃóÕÇ™0Ç»ÇÁéÄñS
         if (_model.Status.HitPoint == 0)
         {
-            Die();
+            Die(context.Direction);
             return;
         }
             
@@ -88,22 +88,20 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         _damageCooldownTimer.StartTimer(DamageCooldownTime);
     }
 
-    private void Die()
+    private void Die(int direction)
     {
         _isActivated = false;
 
-        //ÉXÉRÉAÇÃâ¡éZ
+        UIManager.Instance.AddScore(_model.Score);
 
         AudioManager.Instance.PlaySE(AudioType.EnemyDie);
 
         GetComponent<Collider2D>().enabled = false;
 
-        _rb2d.linearVelocity = new Vector2(DeathLaunchSpeedX * -_model.Direction, DeathLaunchSpeedY);
+        _rb2d.linearVelocity = new Vector2(DeathLaunchSpeedX * direction, DeathLaunchSpeedY);
 
         var randomRotate = Random.Range(MinDeathRotation, MaxDeathRotation);
         _rb2d.DORotate(randomRotate * _model.Direction, 0.5f);
-
-        Debug.Log(transform.name + " Die");
     }
 
     //éÄñSéûÇÃóéâ∫ââèo
@@ -128,7 +126,7 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         var parent = collision.transform.parent;
         if(parent != null && parent.TryGetComponent<WizardPresenter>(out var wizard))
         {
-            var context = new DamageContext(_model.Status.Strength, _model.Power, DamageType.Normal);
+            var context = new DamageContext(_model.Status.Strength, _model.Power, _model.Direction, DamageType.Normal);
             wizard.TakeDamage(context);
         }
     }

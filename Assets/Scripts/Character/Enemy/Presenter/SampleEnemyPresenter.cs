@@ -14,11 +14,13 @@ public class SampleEnemyPresenter : EnemyPresenter
     private bool _isWalled = false;
     private bool _isNextGrounded = false;
     private bool _stopRequest = false;
+    private float _speedVariation;
 
-    private const float GroundRaycastDistance = 0.15f;
-    private const float WallRaycastDistance = 0.4f;
+    private const float GroundRaycastDistance = 0.12f;
+    private const float WallRaycastDistance = 0.8f;
     private const float GroundAdjustValueY = 0f; //地面用Raycastのy座標の生成位置を調整する値
-    private const float NextGroundAdjustValueX = 0.8f; //移動先地面用Raycastのx座標の生成位置を調整する値
+    private const float NextGroundAdjustValueX = 1.4f; //移動先地面用Raycastのx座標の生成位置を調整する値
+    private const float SpeedVariation = 0.3f;
     private const float Acceleration = 12f;
     private const float GroundStickVelocity = 0f;
     private const float Gravity = -4f;
@@ -37,6 +39,8 @@ public class SampleEnemyPresenter : EnemyPresenter
         _nextGroundChecker.ConfigureContactFilter2D();
 
         _view.SetDirectionScale(_model.Direction);
+
+        _speedVariation = Random.Range(-SpeedVariation, SpeedVariation);
     }
 
     public override void ManualFixedUpdate()
@@ -88,8 +92,7 @@ public class SampleEnemyPresenter : EnemyPresenter
             return velocityX;
         }
 
-
-        float maxSpeed = _speed * _model.Direction;
+        float maxSpeed = (_speed + _speedVariation) * _model.Direction;
 
         return Mathf.MoveTowards(_rb2d.linearVelocityX, maxSpeed, Acceleration * Time.fixedDeltaTime);
     }

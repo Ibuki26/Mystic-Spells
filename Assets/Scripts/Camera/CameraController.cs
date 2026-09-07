@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
 
         UpdateCurrentArea();
 
-        Vector3 targetPosition = _target.position + _currentArea.Offset;
+        Vector3 targetPosition = _target.position;
 
         if (_currentArea != null)
         {
@@ -39,17 +39,17 @@ public class CameraController : MonoBehaviour
                 _currentArea.MinY,
                 _currentArea.MaxY);
         }
-
-        targetPosition.z = transform.position.z;
         
-        targetPosition.y  = Mathf.Lerp(
+        targetPosition.y = Mathf.Lerp(
             transform.position.y,
             targetPosition.y,
             _followSpeed * Time.deltaTime);
+       
+        targetPosition.z = transform.position.z;
 
         transform.position = targetPosition;
     }
-
+    
     private void UpdateCurrentArea()
     {
         Collider2D hit = Physics2D.OverlapPoint(
@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
         if (hit == null)
             return;
 
-        if (hit.TryGetComponent(out CameraArea area))
+        if (hit.TryGetComponent<CameraArea>(out var area))
         {
             _currentArea = area;
         }

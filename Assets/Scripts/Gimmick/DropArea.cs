@@ -5,6 +5,8 @@ public class DropArea : MonoBehaviour
     [SerializeField] private Vector3 pos;
     [SerializeField] private int damage;
 
+    private const int DummyDirection = 1;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<WizardPresenter>(out var wizard))
@@ -13,7 +15,7 @@ public class DropArea : MonoBehaviour
             //ƒJƒƒ‰‚ÌˆÊ’u‚ğˆÚ“®‚·‚é
             wizard.transform.position = pos;
 
-            var context = new DamageContext(0, damage, DamageType.Fixed);
+            var context = new DamageContext(0, damage, DummyDirection, DamageType.Fixed);
             wizard.TakeDamage(context);
         }
 

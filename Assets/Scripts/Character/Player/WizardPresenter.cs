@@ -53,6 +53,7 @@ public class WizardPresenter : MonoBehaviour
         _playerinput.onActionTriggered += OnJump;
         _playerinput.onActionTriggered += OnCast;
         _playerinput.onActionTriggered += OnFallthrough;
+        _playerinput.onActionTriggered += OnDebug;
     }
 
     // PlayerInputへの関数登録解除
@@ -64,6 +65,7 @@ public class WizardPresenter : MonoBehaviour
         _playerinput.onActionTriggered -= OnJump;
         _playerinput.onActionTriggered -= OnCast;
         _playerinput.onActionTriggered -= OnFallthrough;
+        _playerinput.onActionTriggered -= OnDebug;
     }
 
     public void ManualStart()
@@ -85,7 +87,7 @@ public class WizardPresenter : MonoBehaviour
         _ceilingChecker = new CheckCeilingCollision(RaycastDistance, _layerMask, collider);
         _groundChecker.ConfigureContactFilter2D();
         _ceilingChecker.ConfigureContactFilter2D();
-        _oneWayPlatformLayer = 1 << LayerMask.NameToLayer("OneWayPlatform");
+        _oneWayPlatformLayer = LayerMask.NameToLayer("OneWayPlatform");
 
         // 魔法情報の初期設定
         _config = new ShotMagicConfig(_configData);
@@ -116,7 +118,7 @@ public class WizardPresenter : MonoBehaviour
         UpdateCeilingFlag();
 
         var context = new WizardVelocityContext(_rb2d.linearVelocity, _jumpRequested, _jumpRelesed, _model, _xAxis, _stateFlags);
-        _rb2d.linearVelocity = _velocityController.UpdateVelocity(context );
+        _rb2d.linearVelocity = _velocityController.UpdateVelocity(context);
         StartJump();
 
         StartCast();
@@ -189,6 +191,7 @@ public class WizardPresenter : MonoBehaviour
         var isStanding = (_stateFlags & WizardStateFlags.Standing) != 0;
         if (isStanding && _jumpRequested)
         {
+            Physics2D.IgnoreLayerCollision(gameObject.layer, _oneWayPlatformLayer, true);
             AudioManager.Instance.PlaySE(AudioType.WizardJump);
             _stateFlags |= WizardStateFlags.Jumping;
             _jumpRequested = false;
@@ -230,10 +233,23 @@ public class WizardPresenter : MonoBehaviour
 
     private void OnFallthrough(InputAction.CallbackContext context)
     {
-        if (context.action.name != "Fallthrough" || !context.canceled) return;
+        if (context.action.name != "Fallthrough" || !context.started) return;
 
         if (_groundChecker.TryGetGroundComponent<FallthroughPlatform>(out var component))
             component.Fallthrough().Forget();
+    }
+
+    private void OnDebug(InputAction.CallbackContext context)
+    {
+        if (context.action.name != "Debug" || !context.started) return;
+
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        worldPosition.z = transform.position.z;
+
+        transform.position = worldPosition;
     }
 
     public void TakeDamage(DamageContext context)
@@ -280,6 +296,7 @@ public class WizardPresenter : MonoBehaviour
         
         if(isStanding && isjumping && isFalling)
         {
+            //Physics2D.IgnoreLayerCollision(gameObject.layer, _oneWayPlatformLayer, false);
             _stateFlags &= ~WizardStateFlags.Jumping;
         }
     }

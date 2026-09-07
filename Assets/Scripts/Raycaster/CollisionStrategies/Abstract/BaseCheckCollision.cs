@@ -27,14 +27,16 @@ public abstract class BaseCheckCollision
         _contactFilter.useTriggers = false;
     }
 
-    public void AddLayerMask(LayerMask mask)
+    public void AddLayerMask(int layer)
     {
-        _contactFilter.layerMask |= mask;
+        var addLayer = 1 << layer;
+        _contactFilter.layerMask |= addLayer;
     }
 
-    public void DeleteLayerMask(LayerMask mask)
+    public void DeleteLayerMask(int layer)
     {
-        _contactFilter.layerMask &= ~mask;
+        var deleteLayer = 1 << layer;
+        _contactFilter.layerMask &= ~deleteLayer;
     }
 
     //“–‚½‚è”»’è‚ÌŠm”F‚ðs‚¤ŠÖ”
@@ -50,10 +52,6 @@ public abstract class BaseCheckCollision
         for (int i = 0; i < _raycastPositions.Length; i++)
         {
             int count = Physics2D.Raycast(_raycastPositions[i], raycastDirection, _contactFilter, _hitBuffers, _raycastDistance);
-
-            Debug.DrawRay(_raycastPositions[i],
-              raycastDirection * _raycastDistance,
-              Color.red);
 
             if (count != 0 && IsHitValid(bounds, _hitBuffers[0], direction))
             {
