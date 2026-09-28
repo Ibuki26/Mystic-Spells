@@ -8,10 +8,13 @@ public class GoalFlag : MonoBehaviour
     {
         if (_isGoalReached) return;
 
-        if(collision.TryGetComponent<WizardPresenter>(out var wizard))
+        if(collision.TryGetComponent<WizardAgent>(out var agent))
         {
             _isGoalReached = true;
             //ƒS[ƒ‹ˆ—
+            Debug.Log("goal");
+            agent.AddReward(1.0f);
+            agent.EndEpisode();
         }
     }
 }

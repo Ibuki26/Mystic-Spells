@@ -53,7 +53,6 @@ public class WizardPresenter : MonoBehaviour
         _playerinput.onActionTriggered += OnJump;
         _playerinput.onActionTriggered += OnCast;
         _playerinput.onActionTriggered += OnFallthrough;
-        _playerinput.onActionTriggered += OnDebug;
     }
 
     // PlayerInputへの関数登録解除
@@ -65,7 +64,6 @@ public class WizardPresenter : MonoBehaviour
         _playerinput.onActionTriggered -= OnJump;
         _playerinput.onActionTriggered -= OnCast;
         _playerinput.onActionTriggered -= OnFallthrough;
-        _playerinput.onActionTriggered -= OnDebug;
     }
 
     public void ManualStart()
@@ -237,19 +235,6 @@ public class WizardPresenter : MonoBehaviour
 
         if (_groundChecker.TryGetGroundComponent<FallthroughPlatform>(out var component))
             component.Fallthrough().Forget();
-    }
-
-    private void OnDebug(InputAction.CallbackContext context)
-    {
-        if (context.action.name != "Debug" || !context.started) return;
-
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        worldPosition.z = transform.position.z;
-
-        transform.position = worldPosition;
     }
 
     public void TakeDamage(DamageContext context)
