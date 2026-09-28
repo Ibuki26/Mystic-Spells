@@ -19,6 +19,12 @@ public class DropArea : MonoBehaviour
             wizard.TakeDamage(context);
         }
 
+        if(collision.gameObject.TryGetComponent<WizardAgent>(out var agent))
+        {
+            Debug.Log("drop");
+            agent.AddReward(-0.01f);
+        }
+
         if (collision.gameObject.TryGetComponent<EnemyPresenter>(out var enemy))
         {
             //スコアの加点とEnemyの破棄

@@ -124,10 +124,18 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var parent = collision.transform.parent;
-        if(parent != null && parent.TryGetComponent<WizardPresenter>(out var wizard))
+        if (parent == null) return;
+
+        if(parent.TryGetComponent<WizardPresenter>(out var wizard))
         {
             var context = new DamageContext(_model.Status.Strength, _model.Power, _model.Direction, DamageType.Normal);
             wizard.TakeDamage(context);
+        }
+
+        if(parent.TryGetComponent<WizardAgent>(out var agent))
+        {
+            Debug.Log("touch enemy");
+            agent.AddReward(-0.01f);
         }
     }
 }
