@@ -17,4 +17,10 @@ public class ScorePresenter : MonoBehaviour
         _model.Score += score;
         _view.UpdateText(_model.Score);
     }
+
+    public void ResetScore()
+    {
+        _model.Score = 0;
+        _view.UpdateText(_model.Score);
+    }
 }

@@ -8,13 +8,16 @@ public class GoalFlag : MonoBehaviour
     {
         if (_isGoalReached) return;
 
-        if(collision.TryGetComponent<WizardAgent>(out var agent))
+        if(collision.TryGetComponent<WizardPresenter>(out var wizard))
         {
             _isGoalReached = true;
             //ÉSÅ[Éãèàóù
-            Debug.Log("goal");
-            agent.AddReward(1.0f);
-            agent.EndEpisode();
+            wizard.GameClear();
         }
+    }
+
+    public void ResetGimmick()
+    {
+        _isGoalReached = false;
     }
 }

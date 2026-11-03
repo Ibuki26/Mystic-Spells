@@ -9,6 +9,12 @@ public class AcivationArea : MonoBehaviour
             receiver.EnterActivationArea();
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<IActivationAreaReceiver>(out var receiver))
+            receiver.EnterActivationArea();
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<IActivationAreaReceiver>(out var receiver))

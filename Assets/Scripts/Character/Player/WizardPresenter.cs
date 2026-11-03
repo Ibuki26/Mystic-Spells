@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,12 +23,16 @@ public class WizardPresenter : MonoBehaviour
     private IMagicConfig _config;
     private Timer _damageCooldownTimer;
     private Timer _castingTimer;
+    private Agent _agent;
 
     private float _xAxis = 0f; //x方向の入力状態を記録する
     private bool _jumpRequested = false;
     private bool _jumpRelesed = false;
     private bool _castRequested = false;
     private int _oneWayPlatformLayer;
+
+    private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
 
     private float RaycastDistance = 0.09f;
     private float GroundAdjustValueY = 0.11f; //Raycastのy座標の生成位置を調整する値
@@ -38,6 +43,8 @@ public class WizardPresenter : MonoBehaviour
     //Debug用
     public WizardStateFlags StateFlags => _stateFlags;
     public WizardModel Model => _model;
+
+    public Rigidbody2D Rigidbody2D => _rb2d;
 
     private void Awake()
     {
@@ -68,6 +75,9 @@ public class WizardPresenter : MonoBehaviour
 
     public void ManualStart()
     {
+        _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
+
         _model = new WizardModel(_modelData);
         _model.SetMoveSpeedStrategy(new NormalMoveSpeed());
         _model.SetDamageStrategy(new NormalDamage());
@@ -93,6 +103,8 @@ public class WizardPresenter : MonoBehaviour
 
         _damageCooldownTimer = new Timer();
         _castingTimer = new Timer();
+
+        _agent = GetComponent<Agent>();
     }
 
     public void ManualUpdate()
@@ -248,6 +260,9 @@ public class WizardPresenter : MonoBehaviour
 
         //UI表示
 
+        if (_model.Status.HitPoint == 0)
+            GameOver();
+
         AudioManager.Instance.PlaySE(AudioType.WizardDamage);
         _view.SetAnimationTrigger("hurt");
 
@@ -294,5 +309,52 @@ public class WizardPresenter : MonoBehaviour
             _stateFlags |= WizardStateFlags.TouchingCeiling;
         else
             _stateFlags &= ~WizardStateFlags.TouchingCeiling;
+    }
+
+    public void GameClear()
+    {
+        Debug.Log("Goal");
+        _agent.AddReward(1.0f);
+        _agent.EndEpisode();
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("GameOver");
+        _agent.AddReward(-1.0f);
+        _agent.EndEpisode();
+    }
+
+    public void ResetWizard()
+    {
+        // 位置・回転を初期状態に戻す
+        transform.SetPositionAndRotation(_initialPosition, _initialRotation);
+
+        // 物理状態をリセット
+        _rb2d.linearVelocity = Vector2.zero;
+        _rb2d.angularVelocity = 0f;
+
+        // 入力状態をリセット
+        _xAxis = 0f;
+        _jumpRequested = false;
+        _jumpRelesed = false;
+        _castRequested = false;
+
+        // 状態フラグをリセット
+        _stateFlags = default;
+
+        // タイマーを初期化
+        _damageCooldownTimer = new Timer();
+        _castingTimer = new Timer();
+
+        // モデルを初期状態から作り直す
+        _model = new WizardModel(_modelData);
+        _model.SetMoveSpeedStrategy(new NormalMoveSpeed());
+        _model.SetDamageStrategy(new NormalDamage());
+        _model.SetHealStrategy(new NormalHeal());
+
+        // 魔法の設定とコマンドを初期化
+        _config = new ShotMagicConfig(_configData);
+        _castCommand = new ShotMagicCommand(new ShotMagicFactory());
     }
 }

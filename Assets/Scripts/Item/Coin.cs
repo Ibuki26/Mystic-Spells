@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : Item
 {
     [SerializeField] private int score;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void Excute(WizardPresenter wizard)
     {
-        if(collision.TryGetComponent<WizardPresenter>(out var _))
-        {
-            AudioManager.Instance.PlaySE(AudioType.Coin);
-            UIManager.Instance.AddScore(score);
-            Destroy(gameObject);
-        }
+        AudioManager.Instance.PlaySE(AudioType.Coin);
+        UIManager.Instance.AddScore(score);
     }
 }

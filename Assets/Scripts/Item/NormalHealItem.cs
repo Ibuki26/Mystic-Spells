@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class NormalHealItem : MonoBehaviour
+public class NormalHealItem : Item
 {
     [SerializeField] private int healPower;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void Excute(WizardPresenter wizard)
     {
-        if(collision.TryGetComponent<WizardPresenter>(out var wizard))
-        {
-            AudioManager.Instance.PlaySE(AudioType.Heal);
-            wizard.Model.TakeHeal(healPower);
-            Destroy(gameObject);
-        }
+        AudioManager.Instance.PlaySE(AudioType.Heal);
+        wizard.Model.TakeHeal(healPower);
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using DG.Tweening;
 
@@ -17,6 +16,10 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
     protected EnemyView _view;
     protected Rigidbody2D _rb2d;
     protected Timer _damageCooldownTimer;
+    private Collider2D _collider;
+
+    private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
 
     protected bool _isActivated = false;
     protected bool _canTakeDamage = true;
@@ -35,9 +38,13 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         _view = GetComponent<EnemyView>();
         _rb2d = GetComponent<Rigidbody2D>();
         _damageCooldownTimer = new Timer();
+        _collider = GetComponent<Collider2D>();
 
         _model.SetDamageStrategy(new NormalDamage());
         _view.Initialize();
+
+        _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
     }
 
     public virtual void ManualUpdate()
@@ -96,7 +103,8 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
 
         AudioManager.Instance.PlaySE(AudioType.EnemyDie);
 
-        GetComponent<Collider2D>().enabled = false;
+        if(_collider != null)
+            _collider.enabled = false;
 
         _rb2d.linearVelocity = new Vector2(DeathLaunchSpeedX * direction, DeathLaunchSpeedY);
 
@@ -107,7 +115,10 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
     //死亡時の落下演出
     private void UpdateDeathMotion()
     {
-        var velocityY = Mathf.MoveTowards(_rb2d.linearVelocityY, DeathFallSpeed, DeathFallAcceleration * Time.fixedDeltaTime);
+        var velocityY = Mathf.MoveTowards(
+            _rb2d.linearVelocityY, 
+            DeathFallSpeed,
+            DeathFallAcceleration * Time.fixedDeltaTime);
 
         _rb2d.linearVelocity = new Vector2(_rb2d.linearVelocityX, velocityY);
     }
@@ -116,9 +127,40 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
     {
         if (_model.Status.HitPoint > 0)
             return;
-        
+
+        // 死亡時の回転処理を停止する
+        _rb2d.DOKill();
+
         //死亡後画面外に出たら破棄される
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public virtual void ResetEnemy()
+    {
+        // 死亡時の回転処理を停止する
+        _rb2d.DOKill();
+
+        // 位置・角度・速度を初期状態に戻す
+        transform.SetPositionAndRotation(_initialPosition, _initialRotation);
+        _rb2d.linearVelocity = Vector2.zero;
+        _rb2d.angularVelocity = 0f;
+
+        // モデルを再生成してHPなどを初期化する
+        _model = new EnemyModel(hitPoint, strength, defense, score, power, direction);
+        _model.SetDamageStrategy(new NormalDamage());
+        _view.SetDirectionScale(_model.Direction);
+
+        // Presenterの状態を初期化する
+        _isActivated = false;
+        _canTakeDamage = true;
+        _damageCooldownTimer = new Timer();
+
+        // Colliderを初期状態に戻す
+        if (_collider != null)
+            _collider.enabled = true;
+
+        // 初期状態がアクティブだった場合は再び有効化する
+        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -128,7 +170,12 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
 
         if(parent.TryGetComponent<WizardPresenter>(out var wizard))
         {
-            var context = new DamageContext(_model.Status.Strength, _model.Power, _model.Direction, DamageType.Normal);
+            var context = new DamageContext(
+                _model.Status.Strength,
+                _model.Power,
+                _model.Direction,
+                DamageType.Normal);
+
             wizard.TakeDamage(context);
         }
 

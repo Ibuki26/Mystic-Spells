@@ -9,12 +9,17 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 
     public void ManualStart()
     {
-        _hitPointView.Initialize();
+        //_hitPointView.Initialize();
         _score.Initialize();
     }
 
     public void AddScore(int score)
     {
         _score.AddScore(score);
+    }
+
+    public void ResetScore()
+    {
+        _score.ResetScore();
     }
 }

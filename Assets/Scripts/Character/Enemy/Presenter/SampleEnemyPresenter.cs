@@ -97,6 +97,16 @@ public class SampleEnemyPresenter : EnemyPresenter
         return Mathf.MoveTowards(_rb2d.linearVelocityX, maxSpeed, Acceleration * Time.fixedDeltaTime);
     }
 
+    public override void ResetEnemy()
+    {
+        base.ResetEnemy();
+        _isGrounded = false;
+        _isWalled = false;
+        _isNextGrounded = false;
+        _stopRequest = false;
+        _speedVariation = Random.Range(-SpeedVariation, SpeedVariation);
+    }
+
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
