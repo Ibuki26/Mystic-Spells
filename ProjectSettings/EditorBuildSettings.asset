@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CameraSensor.unity
     guid: 28a4b9ea89a20f446a4e04821404028f
+  - enabled: 1
+    path: Assets/Scenes/Raycast.unity
+    guid: ebed48377e22cee4698fdc976d32fae0
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 1bf1e6fd3a9dedb478deafa8933da81f, type: 3}
