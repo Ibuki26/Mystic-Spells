@@ -29,7 +29,7 @@ public class WizardAgent : Agent, IInputActionAssetProvider
         transform.position = _startPosition;
         _wizard.ResetWizard();
         areaObjectManager.ResetGroup();
-        UIManager.Instance.ResetScore();
+        UIManager.Instance.ResetUI();
     }
 
     public override void CollectObservations(VectorSensor sensor)

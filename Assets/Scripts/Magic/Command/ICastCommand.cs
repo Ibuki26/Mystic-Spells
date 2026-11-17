@@ -6,7 +6,7 @@ using UnityEngine;
 //À‘•ƒNƒ‰ƒX‚Í–‚–@‚Ìí—Ş‚²‚Æ‚Ì‹““®‚ğ‚Â
 public interface ICastCommand
 {
-    public void Execute(IMagicConfig config, CastContext castContext);
+    public void Execute(IMagicConfig config, CastContext castContext, WizardAgent agent);
 
     public bool UpdateCooldown(float deltaTime);
 

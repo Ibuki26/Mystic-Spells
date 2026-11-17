@@ -15,14 +15,15 @@ public class DropArea : MonoBehaviour
             //ƒJƒƒ‰‚ÌˆÊ’u‚ğˆÚ“®‚·‚é
             wizard.transform.position = pos;
 
-            var context = new DamageContext(0, damage, DummyDirection, DamageType.Fixed);
+            var context = new DamageContext(0, damage, DummyDirection, DamageType.Fixed, null);
             wizard.TakeDamage(context);
         }
 
         if(collision.gameObject.TryGetComponent<WizardAgent>(out var agent))
         {
-            Debug.Log("drop");
-            agent.AddReward(-0.01f);
+            var reward = RewardManager.Instance.FallIntoHoleReward;
+            agent.AddReward(reward);
+            UIManager.Instance.AddLog($"fall into hole: {reward}");
         }
 
         if (collision.gameObject.TryGetComponent<EnemyPresenter>(out var enemy))

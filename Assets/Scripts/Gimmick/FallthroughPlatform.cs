@@ -1,9 +1,8 @@
 using UnityEngine;
 using System;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 
-public class FallthroughPlatform : MonoBehaviour
+public class FallthroughPlatform : Gimmick
 {
     private PlatformEffector2D _effector;
     private int _playerLayer;

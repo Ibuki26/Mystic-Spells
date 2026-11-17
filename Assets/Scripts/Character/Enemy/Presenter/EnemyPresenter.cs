@@ -85,7 +85,7 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         //体力が0なら死亡
         if (_model.Status.HitPoint == 0)
         {
-            Die(context.Direction);
+            Die(context.Direction, context.Agent);
             return;
         }
             
@@ -95,9 +95,13 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         _damageCooldownTimer.StartTimer(DamageCooldownTime);
     }
 
-    private void Die(int direction)
+    private void Die(int direction, WizardAgent agent)
     {
         _isActivated = false;
+
+        var reward = RewardManager.Instance.EnemyDefeatReward;
+        agent.AddReward(reward);
+        UIManager.Instance.AddLog($"defeat enemy: {reward}");
 
         UIManager.Instance.AddScore(_model.Score);
 
@@ -174,15 +178,18 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
                 _model.Status.Strength,
                 _model.Power,
                 _model.Direction,
-                DamageType.Normal);
+                DamageType.Normal,
+                null);
 
             wizard.TakeDamage(context);
         }
 
+        //敵キャラクターがエージェントに触れたら負の報酬
         if(parent.TryGetComponent<WizardAgent>(out var agent))
         {
-            Debug.Log("touch enemy");
-            agent.AddReward(-0.01f);
+            var reward = RewardManager.Instance.EnemyContactReward;
+            agent.AddReward(reward);
+            UIManager.Instance.AddLog($"contact enemy: {reward}");
         }
     }
 }

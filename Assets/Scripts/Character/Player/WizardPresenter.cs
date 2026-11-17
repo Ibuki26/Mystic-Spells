@@ -23,7 +23,7 @@ public class WizardPresenter : MonoBehaviour
     private IMagicConfig _config;
     private Timer _damageCooldownTimer;
     private Timer _castingTimer;
-    private Agent _agent;
+    private WizardAgent _agent;
 
     private float _xAxis = 0f; //x方向の入力状態を記録する
     private bool _jumpRequested = false;
@@ -104,7 +104,7 @@ public class WizardPresenter : MonoBehaviour
         _damageCooldownTimer = new Timer();
         _castingTimer = new Timer();
 
-        _agent = GetComponent<Agent>();
+        _agent = GetComponent<WizardAgent>();
     }
 
     public void ManualUpdate()
@@ -235,7 +235,7 @@ public class WizardPresenter : MonoBehaviour
             _view.SetAnimationTrigger("attack");
 
             var castContext = new CastContext(transform.position, _model.Direction, _model.Status.Strength);
-            _castCommand.Execute(_config, castContext);
+            _castCommand.Execute(_config, castContext, _agent);
 
             _castingTimer.StartTimer(CastingTime);
         }
@@ -257,7 +257,6 @@ public class WizardPresenter : MonoBehaviour
         _stateFlags |= WizardStateFlags.Invincible;
 
         _model.TakeDamage(context);
-
         //UI表示
 
         if (_model.Status.HitPoint == 0)
@@ -313,15 +312,17 @@ public class WizardPresenter : MonoBehaviour
 
     public void GameClear()
     {
-        Debug.Log("Goal");
-        _agent.AddReward(1.0f);
+        var reward = RewardManager.Instance.GoalReward;
+        _agent.AddReward(reward);
+        UIManager.Instance.AddLog($"Game Clear: {reward}");
         _agent.EndEpisode();
     }
 
     private void GameOver()
     {
-        Debug.Log("GameOver");
-        _agent.AddReward(-1.0f);
+        var reward = RewardManager.Instance.GameOverReward;
+        _agent.AddReward(reward);
+        UIManager.Instance.AddLog($"Game Over: {reward}");
         _agent.EndEpisode();
     }
 
@@ -347,11 +348,9 @@ public class WizardPresenter : MonoBehaviour
         _damageCooldownTimer = new Timer();
         _castingTimer = new Timer();
 
-        // モデルを初期状態から作り直す
-        _model = new WizardModel(_modelData);
-        _model.SetMoveSpeedStrategy(new NormalMoveSpeed());
-        _model.SetDamageStrategy(new NormalDamage());
-        _model.SetHealStrategy(new NormalHeal());
+        // 体力と方向を初期化
+        _model.Status.HitPoint = _model.Status.MaxHitPoint;
+        _model.Direction = 1;
 
         // 魔法の設定とコマンドを初期化
         _config = new ShotMagicConfig(_configData);

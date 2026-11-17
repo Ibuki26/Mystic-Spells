@@ -10,13 +10,15 @@ public readonly struct ShotMagicInitContext
     public float Speed { get; }
     public int Direction { get; }
     public float Duration { get; }
+    public WizardAgent Agent { get; }
 
-    public ShotMagicInitContext( int power, int strength, float speed,int direction, float duration)
+    public ShotMagicInitContext( int power, int strength, float speed,int direction, float duration, WizardAgent agent)
     {
         Speed = speed;
         Power = power;
         Strength = strength;
         Direction = direction;
         Duration = duration;
+        Agent = agent;
     }
 }

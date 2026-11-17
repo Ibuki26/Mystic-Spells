@@ -6,11 +6,19 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
 {
     [SerializeField] private HitPointViewer _hitPointView;
     [SerializeField] private ScorePresenter _score;
+    [SerializeField] private RewardLogManager _logManager;
 
     public void ManualStart()
     {
-        //_hitPointView.Initialize();
+        _hitPointView.Initialize();
         _score.Initialize();
+    }
+
+    public void ResetUI()
+    {
+        _hitPointView.ResetHitPointViewer();
+        _score.ResetScore();
+        _logManager.ResetLog();
     }
 
     public void AddScore(int score)
@@ -18,8 +26,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         _score.AddScore(score);
     }
 
-    public void ResetScore()
+    public void AddLog(string message)
     {
-        _score.ResetScore();
+        _logManager.AddLog(message);
     }
 }

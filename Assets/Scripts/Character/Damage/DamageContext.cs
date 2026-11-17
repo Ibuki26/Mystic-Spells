@@ -7,11 +7,14 @@ public readonly struct DamageContext
     public int Direction { get; }
     public DamageType Type { get; }
 
-    public DamageContext(int strength, int power, int direction, DamageType type)
+    public WizardAgent Agent { get; }
+
+    public DamageContext(int strength, int power, int direction, DamageType type, WizardAgent agent)
     {
         Strength = strength;
         Power = power;
         Direction = direction;
         Type = type;
+        Agent = agent;
     }
 }
