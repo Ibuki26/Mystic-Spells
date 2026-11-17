@@ -15,7 +15,7 @@ public class Gimmick : MonoBehaviour
             _isTouched = true;
             var reward = RewardManager.Instance.NewGimmcikContactReward;
             agent.AddReward(reward);
-            UIManager.Instance.AddLog($"contact new gimmick: {reward}");
+            UIManager.Instance.AddLog($"contact new gimmick: {reward}", Color.red);
         }
     }
 

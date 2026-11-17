@@ -16,7 +16,7 @@ public abstract class Item : MonoBehaviour
 
         var reward = RewardManager.Instance.ItemCollectReward;
         agent.AddReward(reward);
-        UIManager.Instance.AddLog($"collect item: {reward}");
+        UIManager.Instance.AddLog($"collect item: {reward}", Color.red);
 
         Execute(wizard);
         gameObject.SetActive(false);

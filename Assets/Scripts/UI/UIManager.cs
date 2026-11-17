@@ -26,8 +26,8 @@ public class UIManager : SingletonMonoBehaviour<UIManager>
         _score.AddScore(score);
     }
 
-    public void AddLog(string message)
+    public void AddLog(string message, Color color)
     {
-        _logManager.AddLog(message);
+        _logManager.AddLog(message, color);
     }
 }

@@ -23,7 +23,7 @@ public class DropArea : MonoBehaviour
         {
             var reward = RewardManager.Instance.FallIntoHoleReward;
             agent.AddReward(reward);
-            UIManager.Instance.AddLog($"fall into hole: {reward}");
+            UIManager.Instance.AddLog($"fall into hole: {reward}", Color.blue);
         }
 
         if (collision.gameObject.TryGetComponent<EnemyPresenter>(out var enemy))

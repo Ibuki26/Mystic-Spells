@@ -45,7 +45,7 @@ public class WizardAgent : Agent, IInputActionAssetProvider
     
     public override void OnActionReceived(ActionBuffers actions)
     {
-
+        AddReward(-1 / MaxStep); 
     }
 
     public (InputActionAsset, IInputActionCollection2) GetInputActionAsset()

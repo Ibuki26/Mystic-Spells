@@ -101,7 +101,7 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
 
         var reward = RewardManager.Instance.EnemyDefeatReward;
         agent.AddReward(reward);
-        UIManager.Instance.AddLog($"defeat enemy: {reward}");
+        UIManager.Instance.AddLog($"defeat enemy: {reward}", Color.red);
 
         UIManager.Instance.AddScore(_model.Score);
 
@@ -189,7 +189,7 @@ public abstract class EnemyPresenter : MonoBehaviour, IActivationAreaReceiver
         {
             var reward = RewardManager.Instance.EnemyContactReward;
             agent.AddReward(reward);
-            UIManager.Instance.AddLog($"contact enemy: {reward}");
+            UIManager.Instance.AddLog($"contact enemy: {reward}", Color.blue);
         }
     }
 }

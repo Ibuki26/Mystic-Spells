@@ -314,7 +314,7 @@ public class WizardPresenter : MonoBehaviour
     {
         var reward = RewardManager.Instance.GoalReward;
         _agent.AddReward(reward);
-        UIManager.Instance.AddLog($"Game Clear: {reward}");
+        UIManager.Instance.AddLog($"Game Clear: {reward}", Color.red);
         _agent.EndEpisode();
     }
 
@@ -322,7 +322,7 @@ public class WizardPresenter : MonoBehaviour
     {
         var reward = RewardManager.Instance.GameOverReward;
         _agent.AddReward(reward);
-        UIManager.Instance.AddLog($"Game Over: {reward}");
+        UIManager.Instance.AddLog($"Game Over: {reward}", Color.blue);
         _agent.EndEpisode();
     }
 
