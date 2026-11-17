@@ -12,7 +12,7 @@ public class HitPointViewer : MonoBehaviour
     public void Initialize()
     {
         _textMesh = GetComponent<TextMeshProUGUI>();
-        _textMesh.text = _wizard.Model.Status.HitPoint.ToString();
+        _textMesh.SetText(_wizard.Model.Status.HitPoint.ToString());
         Bind();
     }
 
@@ -21,8 +21,13 @@ public class HitPointViewer : MonoBehaviour
         _wizard.Model.HitPointChanged
             .Subscribe(hp =>
             {
-                _textMesh.text = hp.ToString();
+                _textMesh.SetText(hp.ToString());
             })
             .AddTo(gameObject);
+    }
+
+    public void ResetHitPointViewer()
+    {
+        _textMesh.SetText(200.ToString());
     }
 }

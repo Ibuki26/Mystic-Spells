@@ -25,7 +25,7 @@ public class RapidShot : ShotMagic
         if(collision.TryGetComponent<EnemyPresenter>(out var enemy))
         {
             int direction = (int)Mathf.Sign(transform.localScale.x);
-            var context = new DamageContext(_strength, _power, direction, DamageType.Normal);
+            var context = new DamageContext(_strength, _power, direction, DamageType.Normal, _agent);
             enemy.TakeDamage(context);
         }
     }

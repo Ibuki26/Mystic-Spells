@@ -11,6 +11,7 @@ public abstract class ShotMagic : MonoBehaviour, IMagic<ShotMagicInitContext>
     protected Timer _durationTimer;
     protected bool _isDestoryed = false;
     protected bool _stopAutoDestory = false;
+    protected WizardAgent _agent;
 
     public int Power => _power;
 
@@ -21,6 +22,7 @@ public abstract class ShotMagic : MonoBehaviour, IMagic<ShotMagicInitContext>
         _power = context.Power;
         _strength = context.Strength;
         _durationTimer = new Timer();
+        _agent = context.Agent;
 
         _durationTimer.StartTimer(context.Duration);
     }

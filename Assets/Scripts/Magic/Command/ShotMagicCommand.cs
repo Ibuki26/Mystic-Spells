@@ -14,14 +14,14 @@ public class ShotMagicCommand : ICastCommand
     }
 
     //à¯êîÇContextÇ…Ç∑ÇÈÇ©Ç‡
-    public void Execute(IMagicConfig config, CastContext castContext)
+    public void Execute(IMagicConfig config, CastContext castContext, WizardAgent agent)
     {
         //âπê∫
         //UIï\é¶
         var shotMagicConfig = (ShotMagicConfig)config;
 
         var spawnPosition = CalculateSpawnPosition(castContext.Position, shotMagicConfig.SpawnOffset, castContext.Direction);
-        _factory.Create(shotMagicConfig, spawnPosition, castContext.Strength, castContext.Direction);
+        _factory.Create(shotMagicConfig, spawnPosition, castContext.Strength, castContext.Direction, agent);
 
         _cooldownTimer.StartTimer(shotMagicConfig.CoolTime);
     }
