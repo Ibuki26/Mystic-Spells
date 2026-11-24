@@ -5,36 +5,24 @@ using UnityEngine;
 public class InGame : MonoBehaviour
 {
     [SerializeField] private WizardPresenter _wizard;
-    [SerializeField] private EnemyPresenter[] enemies;
+    [SerializeField] private AreaObjectManager areaObjectManager;
 
     void Start()
     {
         _wizard.ManualStart();
         UIManager.Instance.ManualStart();
-        foreach (var enemy in enemies)
-        {
-            if(enemy != null)
-                enemy.ManualStart();
-        }
+        areaObjectManager.EnemyManualStart();
     }
 
     void Update()
     {
         _wizard.ManualUpdate();
-        foreach (var enemy in enemies)
-        {
-            if (enemy != null)
-                enemy.ManualUpdate();
-        }
+        areaObjectManager.EnemyManualUpdate();
     }
 
     private void FixedUpdate()
     {
         _wizard.ManualFixedUpdate();
-        foreach (var enemy in enemies)
-        {
-            if (enemy != null)
-                enemy.ManualFixedUpdate();
-        }
+        areaObjectManager.EnemyManualFixedUpdate();
     }
 }

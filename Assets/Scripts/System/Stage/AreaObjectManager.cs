@@ -6,6 +6,36 @@ public class AreaObjectManager : MonoBehaviour
     [SerializeField] AreaObjectGroup[] areaObjectGroups;
     [SerializeField] GoalFlag goalFlag;
 
+    //シーン内のEnemyPresenterのManualStart関数を呼ぶ
+    public void EnemyManualStart()
+    {
+        foreach(var group in areaObjectGroups)
+        {
+            if (group != null)
+                group.EnemyManualStart();
+        }
+    }
+
+    //シーン内のEnemyPresenterのManualUpdate関数を呼ぶ
+    public void EnemyManualUpdate()
+    {
+        foreach (var group in areaObjectGroups)
+        {
+            if (group != null)
+                group.EnemyManualUpdate();
+        }
+    }
+
+    //シーン内のEnemyPresenterのManualFixedUpdate関数を呼ぶ
+    public void EnemyManualFixedUpdate()
+    {
+        foreach (var group in areaObjectGroups)
+        {
+            if (group != null)
+                group.EnemyManualFixedUpdate();
+        }
+    }
+
     public void ResetGroup()
     {
         if (areaObjectGroups != null)
