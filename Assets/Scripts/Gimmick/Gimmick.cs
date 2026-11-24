@@ -4,7 +4,7 @@ using UnityEngine;
 public class Gimmick : MonoBehaviour
 {
     private bool _isTouched = false;
-
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_isTouched) return;
@@ -18,7 +18,7 @@ public class Gimmick : MonoBehaviour
             UIManager.Instance.AddLog($"contact new gimmick: {reward}", Color.red);
         }
     }
-
+    */
     //èâä˙âª
     public void ResetGimmick()
     {

@@ -11,9 +11,9 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
     [field: SerializeField] public float GameOverReward { get; private set; } = -1.0f;
     [field: SerializeField] public float FallIntoHoleReward { get; private set; } = -0.01f;
     //報酬がシーンの内容によって変わる
-    public float EnemyDefeatReward { get; private set; }
-    public float ItemCollectReward { get; private set; }
-    public float NewGimmcikContactReward { get; private set; }
+    public float EnemyDefeatReward { get; private set; } = 0.01f;
+    public float ItemCollectReward { get; private set; } = 0.01f;
+    public float NewGimmcikContactReward { get; private set; } = 0.01f;
 
     //private EnvironmentParameters _envParams;
     private int _enemyCount = 0;
@@ -24,9 +24,9 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
     {
         base.Awake();
         //_envParams = Academy.Instance.EnvironmentParameters;
-        SetEnemyDefeatReward();
-        SetItemCollectReward();
-        SetNewGimmcikContactReward();
+        //SetEnemyDefeatReward();
+        //SetItemCollectReward();
+        //SetNewGimmcikContactReward();
     }
 
     //敵の数を集計し、EnemyDefeatRewardの値を計算する
@@ -46,7 +46,7 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
         ItemCollectReward = 1f / _itemCount;
         Debug.Log($"ItemCollectReward: {ItemCollectReward}");
     }
-
+    /*
     //ギミックの数を集計し、NewGimmcikContactRewardの値を計算する
     private void SetNewGimmcikContactReward()
     {
@@ -55,4 +55,5 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
         NewGimmcikContactReward = 1f / _gimmickCount;
         Debug.Log($"NewGimmcikContactReward: {NewGimmcikContactReward}");
     }
+    */
 }

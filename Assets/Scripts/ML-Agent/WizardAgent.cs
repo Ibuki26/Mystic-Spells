@@ -38,9 +38,9 @@ public class WizardAgent : Agent, IInputActionAssetProvider
         sensor.AddObservation(_wizard.Rigidbody2D.linearVelocity);
         sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.Standing) != 0);
         sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.Jumping) != 0);
-        //sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.Casting) != 0);
-        //sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.Invincible) != 0);
-        //sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.TouchingCeiling) != 0);
+        sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.Casting) != 0);
+        sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.Invincible) != 0);
+        sensor.AddObservation((_wizard.StateFlags & WizardStateFlags.TouchingCeiling) != 0);
     }
     
     public override void OnActionReceived(ActionBuffers actions)

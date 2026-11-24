@@ -132,6 +132,10 @@ PrefabInstance:
       value: Coin_6_5
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -199,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -246,17 +250,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &18032158 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 18032157}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!4 &46279270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4195286206156804666, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -361,6 +354,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_8_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -629,6 +626,10 @@ PrefabInstance:
       value: Coin_1_5
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -688,6 +689,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_10_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -791,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -838,17 +843,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &119648080 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 119648079}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!1 &137217902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,8 +998,6 @@ MonoBehaviour:
   - {fileID: 1412373646}
   - {fileID: 1531510374}
   - {fileID: 1349970918}
-  gimmicks:
-  - {fileID: 1161454345}
 --- !u!1 &208558488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1247,10 @@ PrefabInstance:
       value: Coin_7_4
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -1329,6 +1325,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_8_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -1546,6 +1546,10 @@ PrefabInstance:
       value: Coin_6_3
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -1610,6 +1614,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_1_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -1896,6 +1904,10 @@ PrefabInstance:
       value: NormalHealItem_8_1
       objectReference: {fileID: 0}
     - target: {fileID: 2548848725174324172, guid: 0f07e9f227047584a95cb8bdcfa3583b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548848725174324172, guid: 0f07e9f227047584a95cb8bdcfa3583b, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -2124,6 +2136,10 @@ PrefabInstance:
       value: Coin_4_2
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -2201,6 +2217,10 @@ PrefabInstance:
       value: Coin_4_3
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -2260,6 +2280,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_8_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -2596,10 +2620,6 @@ MonoBehaviour:
   - {fileID: 1347327973}
   - {fileID: 1489484060}
   - {fileID: 1788173312}
-  gimmicks:
-  - {fileID: 1406145480}
-  - {fileID: 952749087}
-  - {fileID: 1542040194}
 --- !u!4 &435772431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4195286206156804666, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -2648,6 +2668,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_6_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -3202,7 +3226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3249,17 +3273,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &653313356 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 653313355}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!1001 &659184815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3385,6 +3398,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_6_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -3717,6 +3734,10 @@ PrefabInstance:
     - target: {fileID: 2548848725174324172, guid: 0f07e9f227047584a95cb8bdcfa3583b, type: 3}
       propertyPath: m_Name
       value: NormalHealItem_4_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548848725174324172, guid: 0f07e9f227047584a95cb8bdcfa3583b, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2548848725174324172, guid: 0f07e9f227047584a95cb8bdcfa3583b, type: 3}
       propertyPath: m_TagString
@@ -4359,6 +4380,10 @@ PrefabInstance:
       value: Coin_8_5
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -4739,6 +4764,10 @@ PrefabInstance:
       value: Coin_1_2
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -4888,6 +4917,10 @@ PrefabInstance:
       value: Coin_6_4
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -4951,7 +4984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881526214}
   - component: {fileID: 881526215}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RaycastObservationTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4989,7 +5022,6 @@ MonoBehaviour:
   m_DetectableTags:
   - Enemy
   - Item
-  - Gimmick
   - Goal
   - Ground
   m_RaysPerDirection: 2
@@ -4998,7 +5030,7 @@ MonoBehaviour:
   m_RayLength: 15
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294966139
+    m_Bits: 4294966088
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -5221,9 +5253,6 @@ MonoBehaviour:
   - {fileID: 1018464986}
   - {fileID: 830865685}
   - {fileID: 1098126418}
-  gimmicks:
-  - {fileID: 18032158}
-  - {fileID: 653313356}
 --- !u!4 &900460101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4195286206156804666, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -5412,7 +5441,6 @@ MonoBehaviour:
   - {fileID: 831230148}
   - {fileID: 1712561973}
   - {fileID: 1473156033}
-  gimmicks: []
 --- !u!4 &907394709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4195286206156804666, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -5553,7 +5581,6 @@ MonoBehaviour:
   - {fileID: 1031560919}
   - {fileID: 1957870906}
   - {fileID: 1784665185}
-  gimmicks: []
 --- !u!1001 &952749086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5568,7 +5595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5615,17 +5642,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &952749087 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 952749086}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!1 &959976704
 GameObject:
   m_ObjectHideFlags: 0
@@ -6103,7 +6119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1028635206}
   - component: {fileID: 1028635207}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: ColliderForEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6580,6 +6596,10 @@ PrefabInstance:
       value: Coin_4_1
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -6700,6 +6720,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_3_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -6935,6 +6959,10 @@ PrefabInstance:
       value: Coin_6_2
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -7013,7 +7041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7060,17 +7088,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1161454345 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1161454344}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!114 &1166814423 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1061780154850204674, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -7093,6 +7110,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_2_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -7461,6 +7482,10 @@ PrefabInstance:
       value: Coin_5_2
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -7525,6 +7550,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_8_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -7679,6 +7708,10 @@ PrefabInstance:
       value: Coin_3_4
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -7738,6 +7771,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_9_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -7904,7 +7941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7983,17 +8020,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1318383033 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1318383032}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!114 &1323555774 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1061780154850204674, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -8015,7 +8041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335661056}
   - component: {fileID: 1335661057}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RaycastObservationTopBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8053,7 +8079,6 @@ MonoBehaviour:
   m_DetectableTags:
   - Enemy
   - Item
-  - Gimmick
   - Goal
   - Ground
   m_RaysPerDirection: 2
@@ -8062,7 +8087,7 @@ MonoBehaviour:
   m_RayLength: 15
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294966139
+    m_Bits: 4294966088
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -8079,6 +8104,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_2_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -8225,6 +8254,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_7_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -8400,6 +8433,10 @@ PrefabInstance:
       value: Coin_9_5
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -8475,6 +8512,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_9_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -8681,6 +8722,10 @@ PrefabInstance:
       value: Coin_8_2
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -8740,6 +8785,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_11_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -8804,7 +8853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8851,17 +8900,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1406145480 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1406145479}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!1 &1409820719
 GameObject:
   m_ObjectHideFlags: 0
@@ -9212,6 +9250,10 @@ PrefabInstance:
       value: Coin_8_4
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -9282,6 +9324,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_7_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -9361,6 +9407,10 @@ PrefabInstance:
       value: Coin_10_1
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -9436,6 +9486,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_9_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -9839,7 +9893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9886,17 +9940,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1542040194 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1542040193}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!114 &1543228043 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1061780154850204674, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -9919,6 +9962,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_5_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -9996,6 +10043,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_10_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -10163,9 +10214,6 @@ MonoBehaviour:
   items:
   - {fileID: 1549629878}
   - {fileID: 1507262800}
-  gimmicks:
-  - {fileID: 1838368044}
-  - {fileID: 119648080}
 --- !u!4 &1577481939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4195286206156804666, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -10209,6 +10257,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_9_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -10281,6 +10333,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_7_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -10360,6 +10416,10 @@ PrefabInstance:
       value: Coin_10_2
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -10426,7 +10486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10505,17 +10565,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1626654735 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1626654734}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!1 &1628080637
 GameObject:
   m_ObjectHideFlags: 0
@@ -10609,6 +10658,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_3_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -10777,6 +10830,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_11_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -11013,8 +11070,6 @@ MonoBehaviour:
   - {fileID: 853382548}
   - {fileID: 1060423210}
   - {fileID: 1940940716}
-  gimmicks:
-  - {fileID: 1822601105}
 --- !u!4 &1691109193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
@@ -11150,9 +11205,6 @@ MonoBehaviour:
   - {fileID: 1826225232}
   - {fileID: 1601674483}
   - {fileID: 1166814423}
-  gimmicks:
-  - {fileID: 1318383033}
-  - {fileID: 1626654735}
 --- !u!1001 &1715164909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11164,6 +11216,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_11_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -11334,7 +11390,6 @@ MonoBehaviour:
   - {fileID: 1212306459}
   - {fileID: 2061743433}
   - {fileID: 1245153570}
-  gimmicks: []
 --- !u!1 &1741351807
 GameObject:
   m_ObjectHideFlags: 0
@@ -11455,7 +11510,6 @@ MonoBehaviour:
   - {fileID: 371132753}
   - {fileID: 2038769695}
   - {fileID: 1140442015}
-  gimmicks: []
 --- !u!1 &1742868709
 GameObject:
   m_ObjectHideFlags: 0
@@ -11577,7 +11631,6 @@ MonoBehaviour:
   - {fileID: 1131349624}
   - {fileID: 563411111}
   - {fileID: 2121342007}
-  gimmicks: []
 --- !u!1001 &1753170801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11589,6 +11642,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_9_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -11881,6 +11938,10 @@ PrefabInstance:
       value: Coin_11_1
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -11948,7 +12009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11995,17 +12056,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1822601105 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1822601104}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!114 &1826225232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1061780154850204674, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
@@ -12066,7 +12116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1345004150821043533, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_TagString
-      value: Gimmick
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 3899767989378187027, guid: b96765201364344438e268d597398406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12113,17 +12163,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96765201364344438e268d597398406, type: 3}
---- !u!114 &1838368044 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8138225459028892078, guid: b96765201364344438e268d597398406, type: 3}
-  m_PrefabInstance: {fileID: 1838368043}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e4374fd89ba78c47be7a410c4700825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallthroughPlatform
 --- !u!1 &1843902276
 GameObject:
   m_ObjectHideFlags: 0
@@ -12239,6 +12278,10 @@ PrefabInstance:
       value: Coin_2_1
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -12300,6 +12343,10 @@ PrefabInstance:
       value: Coin_3_6
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -12359,6 +12406,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_2_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -12438,6 +12489,10 @@ PrefabInstance:
       value: Coin_3_1
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -12497,6 +12552,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_4_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -12560,6 +12619,10 @@ PrefabInstance:
       value: Coin_1_3
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -12618,7 +12681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955383032}
   - component: {fileID: 1955383033}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RaycastObservationRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12656,7 +12719,6 @@ MonoBehaviour:
   m_DetectableTags:
   - Enemy
   - Item
-  - Gimmick
   - Goal
   - Ground
   m_RaysPerDirection: 3
@@ -12665,7 +12727,7 @@ MonoBehaviour:
   m_RayLength: 30
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294966139
+    m_Bits: 4294966088
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -12693,6 +12755,10 @@ PrefabInstance:
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_Name
       value: Coin_3_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_TagString
@@ -12753,7 +12819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1973625781}
   - component: {fileID: 1973625782}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RaycastObservationLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12791,7 +12857,6 @@ MonoBehaviour:
   m_DetectableTags:
   - Enemy
   - Item
-  - Gimmick
   - Goal
   - Ground
   m_RaysPerDirection: 3
@@ -12800,7 +12865,7 @@ MonoBehaviour:
   m_RayLength: 30
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 4294966139
+    m_Bits: 4294966088
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -13440,7 +13505,7 @@ GameObject:
   - component: {fileID: 7896182788826498386}
   - component: {fileID: 5370826101021220581}
   - component: {fileID: 9163214936691155473}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 13 hair side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13550,7 +13615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969880475184926413}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13629,7 +13694,7 @@ GameObject:
   - component: {fileID: 4009618490114558430}
   - component: {fileID: 5586381276473217319}
   - component: {fileID: 7504298709970017647}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 11 head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13647,7 +13712,7 @@ GameObject:
   - component: {fileID: 1787739962407233870}
   - component: {fileID: 5465753618851023852}
   - component: {fileID: 2338237632515173558}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 16 arm front down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13681,7 +13746,7 @@ GameObject:
   - component: {fileID: 4702596386057020725}
   - component: {fileID: 4198055833029035863}
   - component: {fileID: 3971116969225089701}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 02 arm back up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18383,7 +18448,7 @@ GameObject:
   - component: {fileID: 2295170270658188011}
   - component: {fileID: 4521950762016389825}
   - component: {fileID: 6639281229826139928}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 05 leg back down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18465,7 +18530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027294125307761318}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18499,7 +18564,7 @@ GameObject:
   - component: {fileID: 1085627186258160316}
   - component: {fileID: 557929189224642855}
   - component: {fileID: 4205602541705358994}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: "10 Cape \uBCF5\uC0AC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18515,7 +18580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7618519280482276288}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18704,7 +18769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7225042418970296982}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18742,7 +18807,7 @@ GameObject:
   - component: {fileID: 8846716129246990890}
   - component: {fileID: 2527981395499850159}
   - component: {fileID: 7584788064487841871}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 04 leg back up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18760,7 +18825,7 @@ GameObject:
   - component: {fileID: 686187461387845565}
   - component: {fileID: 4182233397791894402}
   - component: {fileID: 5129182247240361583}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 14 arm front up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18776,7 +18841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3979805269666870850}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18824,7 +18889,7 @@ GameObject:
   - component: {fileID: 324229898230773540}
   - component: {fileID: 2612452129236510381}
   - component: {fileID: 2072055322931269659}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: "15 Staff \uBCF5\uC0AC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18863,7 +18928,7 @@ GameObject:
   - component: {fileID: 8873612455624275905}
   - component: {fileID: 6822696651698503285}
   - component: {fileID: 6105029921128224302}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 08 Skirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19002,7 +19067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
-  DecisionPeriod: 10
+  DecisionPeriod: 5
   DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &4105362945664415885
@@ -19035,7 +19100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
   m_BrainParameters:
-    VectorObservationSize: 5
+    VectorObservationSize: 8
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -19044,10 +19109,10 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 66a4afdaa2a94614da6b91f2122e576a, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 2
-  m_BehaviorName: MysticSpellsTest8
+  m_BehaviorType: 0
+  m_BehaviorName: MysticSpellsTest12
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -19093,7 +19158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7043700547520773337}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19332,7 +19397,7 @@ GameObject:
   - component: {fileID: 153803427494193051}
   - component: {fileID: 4414854856175959836}
   - component: {fileID: 1803947556010669690}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 01 hair back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19422,7 +19487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7478621442882537303}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Skeletal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19440,7 +19505,7 @@ GameObject:
   - component: {fileID: 5117221449187287061}
   - component: {fileID: 6674427708901890518}
   - component: {fileID: 568238790357985057}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 06 leg front up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19506,7 +19571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1397467440626415190}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19581,7 +19646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8895734465004671885}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19715,7 +19780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3511785189565403188}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19881,7 +19946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7557055653083989773}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20017,6 +20082,10 @@ PrefabInstance:
       value: Coin_1_1
       objectReference: {fileID: 0}
     - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206736659280823295, guid: 81786cbcb361e43438d4d902463d2306, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -20080,7 +20149,7 @@ GameObject:
   - component: {fileID: 1800726548179627449}
   - component: {fileID: 5198229685478531508}
   - component: {fileID: 4151390120841660087}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 12 hair front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20155,7 +20224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648001209502344322}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20285,7 +20354,7 @@ GameObject:
   - component: {fileID: 5089723256241820694}
   - component: {fileID: 8494281600952430749}
   - component: {fileID: 6836963754640543082}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 07 leg front down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20462,7 +20531,7 @@ GameObject:
   - component: {fileID: 445161243571452747}
   - component: {fileID: 6995169295242852860}
   - component: {fileID: 3912306946351287795}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 09 Shirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20498,7 +20567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2880357164813157781}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20529,7 +20598,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1909848428507755025}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20566,7 +20635,7 @@ GameObject:
   - component: {fileID: 1679840964504810064}
   - component: {fileID: 6069236237397603627}
   - component: {fileID: 2643616705416188483}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 03 arm back down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20641,7 +20710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6096861705002288066}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20657,7 +20726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9076079380052610206}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20673,7 +20742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6449222300008863113}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20735,7 +20804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1033345496218544257}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bone_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}

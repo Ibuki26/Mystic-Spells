@@ -39,7 +39,7 @@ public class AreaObjectManager : MonoBehaviour
 
         return count;
     }
-
+    /*
     //シーン内のギミックの数を返す
     public int GetGimmickCount()
     {
@@ -50,4 +50,5 @@ public class AreaObjectManager : MonoBehaviour
 
         return count;
     }
+    */
 }
