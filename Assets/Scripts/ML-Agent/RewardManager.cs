@@ -27,6 +27,10 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
         //SetEnemyDefeatReward();
         //SetItemCollectReward();
         //SetNewGimmcikContactReward();
+        _enemyCount = areaManager.GetEnemyCount();
+        Debug.Log($"enemy: {_enemyCount}");
+        _itemCount = areaManager.GetItemCount();
+        Debug.Log($"item: {_itemCount}");
     }
 
     //敵の数を集計し、EnemyDefeatRewardの値を計算する
