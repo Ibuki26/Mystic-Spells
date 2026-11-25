@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5858947250477974953}
   - component: {fileID: 2864499052577045642}
   - component: {fileID: -4394271175749521811}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RapidShot
-  m_TagString: Untagged
+  m_TagString: Magic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
