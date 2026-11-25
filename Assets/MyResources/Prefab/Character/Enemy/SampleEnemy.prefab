@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4109505573263567635}
   m_Layer: 6
   m_Name: SampleEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd70bb7a196bb4f4f8f95162ff738507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SampleEnemyPresenter
-  hitPoint: 65
+  hitPoint: 50
   strength: 60
   defense: 60
   score: 300
