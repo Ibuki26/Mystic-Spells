@@ -6,35 +6,45 @@ public class AreaObjectGroup : MonoBehaviour
 {
     [SerializeField] private EnemyPresenter[] enemies;
     [SerializeField] private Item[] items;
+    [SerializeField] private GameObject[] blocks;
     //[SerializeField] private Gimmick[] gimmicks;
 
     //エリア内のEnemyPresenterのManualStart関数を呼ぶ
-    public void EnemyManualStart()
+    public void EnemiesManualStart()
     {
-        foreach (var enemy in enemies)
+        if (enemies != null && enemies.Length > 0)
         {
-            if (enemy != null)
-                enemy.ManualStart();
+            foreach (var enemy in enemies)
+            {
+                if (enemy != null)
+                    enemy.ManualStart();
+            }
         }
     }
 
     //エリア内のEnemyPresenterのManualUpdate関数を呼ぶ
-    public void EnemyManualUpdate()
+    public void EnemiesManualUpdate()
     {
-        foreach (var enemy in enemies)
+        if (enemies != null && enemies.Length > 0)
         {
-            if (enemy != null)
-                enemy.ManualUpdate();
+            foreach (var enemy in enemies)
+            {
+                if (enemy != null)
+                    enemy.ManualUpdate();
+            }
         }
     }
 
     //エリア内のEnemyPresenterのManualFixedUpdate関数を呼ぶ
-    public void EnemyManualFixedUpdate()
+    public void EnemiesManualFixedUpdate()
     {
-        foreach (var enemy in enemies)
+        if (enemies != null && enemies.Length > 0)
         {
-            if (enemy != null)
-                enemy.ManualFixedUpdate();
+            foreach (var enemy in enemies)
+            {
+                if (enemy != null)
+                    enemy.ManualFixedUpdate();
+            }
         }
     }
 
@@ -44,13 +54,20 @@ public class AreaObjectGroup : MonoBehaviour
         if (enemies != null && enemies.Length > 0)
         {
             foreach (var enemy in enemies)
-                enemy.ResetEnemy();
+            {
+                if(enemy != null)
+                    enemy.ResetEnemy();
+            }
+                
         }
 
         if (items != null && items.Length > 0)
         {
             foreach (var item in items)
-                item.ResetItem();
+            {
+                if (item != null)
+                    item.ResetItem();
+            }
         }
         /*
         if(gimmicks != null && gimmicks.Length > 0)
@@ -59,6 +76,45 @@ public class AreaObjectGroup : MonoBehaviour
                 gimmick.ResetGimmick();
         }
         */
+    }
+
+    //エリア内の敵キャラクターのアクティブ状態を設定する
+    public void SetEnemiesActive(bool value)
+    {
+        if (enemies != null && enemies.Length > 0)
+        {
+            foreach (var enemy in enemies)
+            {
+                if (enemy != null)
+                    enemy.gameObject.SetActive(value);
+            }
+        }
+    }
+
+    //エリア内のアイテムのアクティブ状態を設定する
+    public void SetItemsActive(bool value)
+    {
+        if (items != null && items.Length > 0)
+        {
+            foreach (var item in items)
+            {
+                if (item != null)
+                    item.gameObject.SetActive(value);
+            }
+        }
+    }
+
+    //エリア内の埋め立てブロックのアクティブ状態を設定する
+    public void SetBlocksActive(bool value)
+    {
+        if(blocks != null && blocks.Length > 0)
+        {
+            foreach(var block in blocks)
+            {
+                if (block != null)
+                    block.SetActive(value);
+            }
+        }
     }
 
     //エリア内の敵キャラクターの数を返す

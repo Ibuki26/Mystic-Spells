@@ -3,8 +3,9 @@ using UnityEngine;
 //ギミックの親クラス
 public class Gimmick : MonoBehaviour
 {
-    private bool _isTouched = false;
     /*
+    private bool _isTouched = false;
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_isTouched) return;
@@ -18,10 +19,11 @@ public class Gimmick : MonoBehaviour
             UIManager.Instance.AddLog($"contact new gimmick: {reward}", Color.red);
         }
     }
-    */
+    
     //初期化
     public void ResetGimmick()
     {
         _isTouched = false;
     }
+    */
 }

@@ -1,10 +1,8 @@
 using UnityEngine;
-using Unity.MLAgents;
 
 //報酬の値を管理するクラス。ここから報酬を与えるときに値を渡す
 public class RewardManager : SingletonMonoBehaviour<RewardManager>
 {
-    [SerializeField] private AreaObjectManager areaManager;
     //報酬が定数
     [field: SerializeField] public float EnemyContactReward { get; private set; } = -0.01f;
     [field: SerializeField] public float GoalReward { get; private set; } = 1.0f;
@@ -18,25 +16,28 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
     //private EnvironmentParameters _envParams;
     private int _enemyCount = 0;
     private int _itemCount = 0;
-    private int _gimmickCount = 0;
+    //private int _gimmickCount = 0;
+
+    private AreaObjectManager _areaObjectManager;
 
     protected override void Awake()
     {
         base.Awake();
+        _areaObjectManager = AreaObjectManager.Instance;
         //_envParams = Academy.Instance.EnvironmentParameters;
         //SetEnemyDefeatReward();
         //SetItemCollectReward();
         //SetNewGimmcikContactReward();
-        _enemyCount = areaManager.GetEnemyCount();
+        _enemyCount = _areaObjectManager.GetEnemyCount();
         Debug.Log($"enemy: {_enemyCount}");
-        _itemCount = areaManager.GetItemCount();
+        _itemCount = _areaObjectManager.GetItemCount();
         Debug.Log($"item: {_itemCount}");
     }
 
     //敵の数を集計し、EnemyDefeatRewardの値を計算する
     private void SetEnemyDefeatReward()
     {
-        _enemyCount = areaManager.GetEnemyCount();
+        _enemyCount = _areaObjectManager.GetEnemyCount();
         Debug.Log($"enemy: {_enemyCount}");
         EnemyDefeatReward = 1f / _enemyCount;
         Debug.Log($"EnemyDefeatReward: {EnemyDefeatReward}");
@@ -45,7 +46,7 @@ public class RewardManager : SingletonMonoBehaviour<RewardManager>
     //アイテムの数を集計し、ItemCollectRewardの値を計算する
     private void SetItemCollectReward()
     {
-        _itemCount = areaManager.GetItemCount();
+        _itemCount = _areaObjectManager.GetItemCount();
         Debug.Log($"item: {_itemCount}");
         ItemCollectReward = 1f / _itemCount;
         Debug.Log($"ItemCollectReward: {ItemCollectReward}");
