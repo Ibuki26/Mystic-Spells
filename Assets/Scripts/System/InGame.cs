@@ -5,24 +5,25 @@ using UnityEngine;
 public class InGame : MonoBehaviour
 {
     [SerializeField] private WizardPresenter _wizard;
-    [SerializeField] private AreaObjectManager areaObjectManager;
+    private AreaObjectManager _areaObjectManager;
 
     void Start()
     {
         _wizard.ManualStart();
         UIManager.Instance.ManualStart();
-        areaObjectManager.EnemyManualStart();
+        _areaObjectManager = AreaObjectManager.Instance;
+        _areaObjectManager.EnemyManualStart();
     }
 
     void Update()
     {
         _wizard.ManualUpdate();
-        areaObjectManager.EnemyManualUpdate();
+        _areaObjectManager.EnemyManualUpdate();
     }
 
     private void FixedUpdate()
     {
         _wizard.ManualFixedUpdate();
-        areaObjectManager.EnemyManualFixedUpdate();
+        _areaObjectManager.EnemyManualFixedUpdate();
     }
 }

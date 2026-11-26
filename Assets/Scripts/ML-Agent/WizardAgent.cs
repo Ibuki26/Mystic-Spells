@@ -7,11 +7,10 @@ using Unity.MLAgents.Sensors;
 
 public class WizardAgent : Agent, IInputActionAssetProvider
 {
-    [SerializeField] private AreaObjectManager areaObjectManager;
-
     private Vector3 _startPosition;
     private PlayerInput _playerInput;
     private WizardPresenter _wizard;
+    private EnvironmentManager _environmentManager;
 
     protected override void Awake()
     {
@@ -22,14 +21,17 @@ public class WizardAgent : Agent, IInputActionAssetProvider
     {
         _startPosition = transform.position;
         _wizard = GetComponent<WizardPresenter>();
+        _environmentManager = new EnvironmentManager();
     }
 
     public override void OnEpisodeBegin()
     {
         transform.position = _startPosition;
         _wizard.ResetWizard();
-        areaObjectManager.ResetGroup();
+        AreaObjectManager.Instance.ResetGroup();
         UIManager.Instance.ResetUI();
+        //ƒŒƒbƒXƒ“”’l‚Ìæ“¾
+        
     }
 
     public override void CollectObservations(VectorSensor sensor)
